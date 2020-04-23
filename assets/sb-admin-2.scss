@@ -1,0 +1,64 @@
+// Import Fonts
+@import url("https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i");
+
+// Import Custom SB Admin 2 Variables (Overrides Default Bootstrap Variables)
+@import "variables.scss";
+
+// Import Bootstrap
+@import "../node_modules/bootstrap/scss/bootstrap.scss";
+
+// Import Custom SB Admin 2 Mixins and Components
+@import "mixins.scss";
+@import "global.scss";
+@import "utilities.scss";
+
+// Custom Components
+@import "dropdowns.scss";
+@import "navs.scss";
+@import "buttons.scss";
+@import "cards.scss";
+@import "charts.scss";
+@import "login.scss";
+@import "error.scss";
+@import "footer.scss";
+
+// App Specific Styling
+
+html{ font-size: 14px;  }
+body{background: #55bdca;}
+
+#wrapper{ padding-bottom: 100px; }
+
+.totalsBar{  }
+.totalsBar .editButton{ position: absolute; left: 0px; top: 3px; z-index: 4; width: 100%; text-transform: uppercase; text-align: center; font-weight: 600; }
+.totalsBar .editButton span{ font-weight: 900; }
+.totalsBar .editButton:hover{ text-decoration: none; }
+.totalsBar .progress{ height: .75em; }
+.totalsBar .overbudget{ margin-top: -20px; }
+
+.gList .card{ cursor:move; }
+.card-body{ padding: 1rem;  }
+.card-header { padding: 0.5rem 1rem; }
+.card-header .fa{ float: right; font-size: 1.25rem; }
+.card-header .fa:hover{ opacity: .8; text-decoration: none; }
+.card-header .label{ display: inline-block; padding: 1px 40px 1px 0; border-bottom: 1px solid #f8f9fc; cursor: text; }
+.card-header span.total{ color:#5a5c69;  }
+
+.ghost { opacity: 0.5; }
+/* .card-header .label:hover{ border-bottom-color:#eee; } */
+
+.text-red{ color:#fc4444 !important; }
+.table{ margin-bottom: 0; }
+.table th, .table td{ padding: .3rem .5rem; }
+.table thead th{ font-size: .75rem; }
+.table tr{ transition:background 150ms linear; }
+.table tbody tr:hover{ background: #f8f8f8; }
+.table tbody tr.isChecked{ background: #f0f0f0; }
+.table tr td{ vertical-align: middle; }
+.table tbody input[type=number], .table tbody select{ border-color: #fff; }
+.table tfoot select,
+.table tbody select{ width: 5.14rem; display: inline-block; }
+.table tbody input[type=number]:hover, .table tbody select:hover{ border: 1px solid #d1d3e2; }
+.table tfoot .form-control.float-right{ display: inline-block; width: 3.57rem; margin: 0 .43rem; }
+
+input[type=text].bare{ background: transparent; border: 0; border-bottom: 1px solid #d1d3e2; width: 50%; outline:none; font-weight: bold; }
