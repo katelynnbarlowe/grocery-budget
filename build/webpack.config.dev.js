@@ -36,10 +36,20 @@ module.exports = {
           'vue-style-loader',
           // Translates CSS into CommonJS
           'css-loader',
-          // Compiles Sass to CSS
-          'sass-loader',
+          {
+            loader: 'sass-loader',
+            options: {
+              sourceMap: true,
+            },
+          },
         ]
-      }
+      },  
+      {
+        test: /\.(ttf|eot|svg|jpe?g|gif|png|woff|woff2)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+          use: [{
+              loader: 'file-loader'
+          }]
+      } 
     ]
   },
   plugins: [

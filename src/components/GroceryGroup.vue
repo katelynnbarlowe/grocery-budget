@@ -4,6 +4,7 @@
 			<span class="float-right total" v-if="checkedTotal>0">Selected Total: {{checkedTotal}} <span class="text-xs font-weight-normal">({{selectedPercent}}% of current total)</span></span>
 			<span class="label text-dark" @click="startEditing" v-if="!editing">{{area.groupName}}</span> 
 			<input type="text" v-if="editing" ref="editField" @blur="editing=false" @keyup.enter="editing=false" class="bare" v-model="area.groupName" />
+			<a href="#" @click.prevent="deleteGroup" class="float-right text-gray-500"><span class="fas fa-window-close"></span></a>
 		</div>
 		<div class='card-body'>
 			<table class="table dataTable">
@@ -83,7 +84,7 @@ export default {
 			area:{
 				deep:true,
 				handler:function(){
-					this.$store.dispatch('saveState');
+					//this.$store.dispatch('saveState');
 				}
 			},
 			addingNum:function(newValue,oldValue){
@@ -165,8 +166,12 @@ export default {
 				this.addingNum=1;
 			},
 			saveState:function(){
-				console.log("saving");
 				this.$store.dispatch('saveState');
+			},
+			deleteGroup:function(){
+   				if(confirm("Do you really want to the "+this.area.groupName+" group?")){
+					this.$store.commit('removeGroup',{ areaIndex:this.keyVal});
+				}
 			}
 		}
 };

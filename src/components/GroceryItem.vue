@@ -15,19 +15,19 @@
 			</select>
 		</td>
 		<td class="text-right">
-			<!--this.$parent.$parent.$parent.formatPrice(-->
 			{{rowTotal}}
 		</td>
 	</tr>
 </template>
 
 <script>
+import helper from '@/helper';
 export default {
     name: "GroceryItem",
     props: ['item','keyVal'],
 	computed:{
 		rowTotal:function(){
-			return this.item.qty*this.item.cost;
+			return helper.formatPrice(this.item.qty*this.item.cost);
 		}
 	},
 	methods:{

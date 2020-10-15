@@ -3,13 +3,13 @@
 
 .bg-login-image {
   background: url($login-image);
-  background-position: center;
+  background-position: center bottom;
   background-size: cover;
 }
 
 .bg-register-image {
   background: url($register-image);
-  background-position: center;
+  background-position: center -40px;
   background-size: cover;
 }
 

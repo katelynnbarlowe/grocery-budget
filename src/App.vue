@@ -1,30 +1,17 @@
 <template>
 	 <div id='wrapper' class='bg-primary'>
-			<div class="container">
-				<div class='col' :style="containerStyles">
-					<TotalsBar 
-					v-on:taxUpdate="updateSalesTax"	
-					v-on:heightUpdate="heightUpdate"	
-						:salesTax='salesTax'
-						:currentTotal='currentTotal'> 
-					</TotalsBar>
-					<GroceryList 
-						v-bind:groceryList='list'
-						>
-					</GroceryList>
-			</div>
-		</div>
+		<router-view></router-view>
 	</div>
 </template>
                     
 <script>
-import TotalsBar from "@/components/Totals";
+/*import TotalsBar from "@/components/Totals";
 import GroceryList from "@/components/GroceryList";
-import Vue from 'vue'
+import Vue from 'vue'*/
 
 export default {
     name: "App",
-	data: function(){
+	/*data: function(){
 		return {
 		    list:this.$store.state.list,
 		    salesTax: this.$store.state.salesTax,
@@ -56,6 +43,6 @@ export default {
 		heightUpdate:function(value){
 			Vue.set(this.containerStyles,"margin-top",value);
 		}
-    }
+    }*/
 };
 </script>
