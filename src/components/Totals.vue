@@ -1,9 +1,9 @@
 <template>
-	 <div class='preview-bar totalsBar shadow bg-white sticky-top p-2 mb-4 border-bottom-success' @mouseover="editable=true" @mouseleave="editable=false" ref="totals">
+	<div class='preview-bar totalsBar shadow bg-white sticky-top p-2 mb-4 border-bottom-success' @mouseover="editable=true" @mouseleave="editable=false" ref="totals">
 		<a href="#" class="text-secondary editButton" v-if="editable&&!editing" @click.prevent="editing=true; editable=false"><span class="fa fa-cog "></span> List Settings</a>
 		<div class="editBar mb-1" v-if="editing">
 			<div class="row">
-				<div class="col">					
+				<div class="col">
 					<div class="row">
 						<div class="col">
 							<label for="" class="text-xs font-weight-bold text-uppercase mb-1">List Name</label>
@@ -28,7 +28,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="col-1">					
+				<div class="col-1">
 					<a href="#" @click.prevent="editing=false; saveSettings()" class="closeLink btn btn-success btn-lg col mb-1">save</a>
 					<a href="#" @click.prevent="deleteList()" class="deleteLink btn btn-danger btn-sm col">delete list</a>
 				</div>
@@ -53,87 +53,87 @@
 		</div>
 		<div class="text-red text-sm mb-1 text-center overbudget" v-if="moneyLeft<0">You are over budget.</div>
 		<div class="progress">
-        	<div class="progress-bar" :class="{ 'bg-warning':(percentUsed>90),'bg-success':(moneyLeft==0),'bg-danger':(moneyLeft<0) }" role="progressbar" :style="progress" :aria-valuenow="progress" aria-valuemin="0" aria-valuemax="100"></div>
-      	</div>
+			<div class="progress-bar" :class="{ 'bg-warning':(percentUsed>90),'bg-success':(moneyLeft==0),'bg-danger':(moneyLeft<0) }" role="progressbar" :style="progress" :aria-valuenow="progress" aria-valuemin="0" aria-valuemax="100"></div>
+		</div>
 	</div>
 </template>
 
 <script>
-import helper from '@/helper';
+import helper from '@/helper'
 
 export default {
-    name: "Totals",
-	props:[ 'currentTotal' ],
-	computed:{
-		progress:function(){
-			return "width:"+((this.currentTotal/this.budget)*100)+"%";
+	name: 'Totals',
+	props: [ 'currentTotal' ],
+	computed: {
+		progress: function () {
+			return 'width:' + ((this.currentTotal / this.budget) * 100) + '%'
 		},
-		moneyLeft:function(){
-			return this.budget-this.currentTotal;
+		moneyLeft: function () {
+			return this.budget - this.currentTotal
 		},
-		negative:function(){
-			return this.left<0;
+		negative: function () {
+			return this.left < 0
 		},
-		percentUsed:function(){
-			return Math.ceil(this.currentTotal/this.budget*100);
+		percentUsed: function () {
+			return Math.ceil(this.currentTotal / this.budget * 100)
 		},
-    	totalDisplay:function(){
-    		return helper.formatPrice(this.currentTotal)
-    	},
-    	moneyLeftDisplay:function(){
-    		return helper.formatPrice(this.moneyLeft)
-    	}
+		totalDisplay: function () {
+			return helper.formatPrice(this.currentTotal)
+		},
+		moneyLeftDisplay: function () {
+			return helper.formatPrice(this.moneyLeft)
+		}
 	},
-	data:function(){
+	data: function () {
 		return {
-			name:this.$store.state.name,
-			editable:false,
-			editing:false,
-			budget:this.$store.state.budget,
-			sales_tax:this.$store.state.sales_tax,
-			nameUpdated:false
+			name: this.$store.state.name,
+			editable: false,
+			editing: false,
+			budget: this.$store.state.budget,
+			sales_tax: this.$store.state.sales_tax,
+			nameUpdated: false
 		}
 	},
-    watch:{
-	  	name:function(newValue,oldValue){
-	  		this.$store.commit('updateName',newValue);
-	  		this.nameUpdated=true;
+	watch: {
+		name: function (newValue, oldValue) {
+			this.$store.commit('updateName', newValue)
+			this.nameUpdated = true
 		},
-	  	budget:function(newValue,oldValue){
-	  		this.$store.commit('updateBudget',newValue);
+		budget: function (newValue, oldValue) {
+			this.$store.commit('updateBudget', newValue)
 		},
-		sales_tax:function(newValue,oldValue){
-	  		this.$store.commit('updateTax',newValue);
-			this.$emit('taxUpdate',newValue);
+		sales_tax: function (newValue, oldValue) {
+			this.$store.commit('updateTax', newValue)
+			this.$emit('taxUpdate', newValue)
 		}
-    },
-    mounted:async function(){
-    },
-    methods:{
-		saveSettings:async function(){
-			var listId = this.$store.state.listId;
-			var response = await this.$store.dispatch('saveList');
+	},
+	mounted: async function () {
+	},
+	methods: {
+		saveSettings: async function () {
+			var listId = this.$store.state.listId
+			await this.$store.dispatch('saveList')
 
-			if(this.$store.state.listId!=listId){
-      			this.$router.replace('/list/'+this.$store.state.listId);
-				this.reload();
+			if (this.$store.state.listId !== listId) {
+				this.$router.replace('/list/' + this.$store.state.listId)
+				this.reload()
 			}
-			if(this.nameUpdated){ // what will happen for new list?
-				this.$emit('updateName');				
-				this.nameUpdated=false;
+			if (this.nameUpdated) { // what will happen for new list?
+				this.$emit('updateName')
+				this.nameUpdated = false
 			}
-		},		
-		reload:function(){		
-		  	this.budget=this.$store.state.budget;
-		  	this.sales_tax=this.$store.state.sales_tax;
-		  	this.name=this.$store.state.name;
 		},
-		toggle:function(){
-			this.editing=!this.editing;
+		reload: function () {
+			this.budget = this.$store.state.budget
+			this.sales_tax = this.$store.state.sales_tax
+			this.name = this.$store.state.name
 		},
-		deleteList:function(){
-			this.$emit('deleteList');
+		toggle: function () {
+			this.editing = !this.editing
+		},
+		deleteList: function () {
+			this.$emit('deleteList')
 		}
-    }
-};
+	}
+}
 </script>

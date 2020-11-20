@@ -13,6 +13,7 @@ module.exports = {
   ],
   devServer: {
     hot: true,
+    disableHostCheck: true,
     watchOptions: {
       poll: true
     }

@@ -1,17 +1,17 @@
 <template>
-	 <div id='wrapper' class='bg-primary'>
+	<div id='wrapper' class='bg-primary'>
 		<router-view></router-view>
 	</div>
 </template>
-                    
+
 <script>
-/*import TotalsBar from "@/components/Totals";
+/* import TotalsBar from "@/components/Totals";
 import GroceryList from "@/components/GroceryList";
-import Vue from 'vue'*/
+import Vue from 'vue' */
 
 export default {
-    name: "App",
-	/*data: function(){
+	name: 'App'
+	/* data: function(){
 		return {
 		    list:this.$store.state.list,
 		    salesTax: this.$store.state.salesTax,
@@ -43,6 +43,6 @@ export default {
 		heightUpdate:function(value){
 			Vue.set(this.containerStyles,"margin-top",value);
 		}
-    }*/
-};
+    } */
+}
 </script>
