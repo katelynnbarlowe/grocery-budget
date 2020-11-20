@@ -15,22 +15,22 @@ npm run dev
 
 ### Current Features
 + A list of "groups" with editable names that can be used to categorize the grocery items however the user wants. Ex: aisles in the store, food groups, etc.
-++ The ability to add more groups
+    ++ The ability to add more groups
 + A list of grocery items within the group with editable quantities and unit costs, calculating a row total dynamically
 + A progress bar at the top to display how much money is still available based on the budget - (item row totals * sales tax).
 + The ability to remove these items individually or in multiples
 + The ability to add one or more items at a time
 + A subtotal display of all selected grocery items
 + The ability to edit list settings 
-++ budgeted amount
-++ sales tax
-++ name
+    ++ budgeted amount
+    ++ sales tax
+    ++ name
 + Alerts when you've gone over budget
 + The ability to sort list items and groups
 + The ability to load previously-saved lists
 + User Management
-++ Ability to update name/email/password
-++ Ability to set default list budget and sales tax
+    ++ Ability to update name/email/password
+    ++ Ability to set default list budget and sales tax
 
 ### Future Features
 + Deploy to production
